@@ -1,0 +1,52 @@
+{
+  "apiVersion": "nlplab.socios-linux.dev/v1",
+  "kind": "LanguageAnalysisRecord",
+  "metadata": {
+    "name": "sample-basic-primitives-record",
+    "createdBy": "nlplab-fixture"
+  },
+  "spec": {
+    "adapter": {
+      "name": "fixture-basic-primitives",
+      "version": "0.1.0"
+    },
+    "algorithmFamily": "basic-primitives",
+    "taskContract": "language.primitive.v1/Analyze",
+    "inputRef": "fixtures/text/short-en.txt",
+    "pipelineOrModelRef": "adapter://nlplab/fixture-basic-primitives@0.1.0",
+    "outputs": [
+      {
+        "type": "language",
+        "value": "en",
+        "confidence": 1.0
+      },
+      {
+        "type": "sentence",
+        "value": "Holmes investigates evidence.",
+        "startChar": 0,
+        "endChar": 29,
+        "confidence": 1.0
+      },
+      {
+        "type": "token",
+        "value": "Holmes",
+        "startChar": 0,
+        "endChar": 6,
+        "confidence": 1.0
+      }
+    ],
+    "metrics": {
+      "latencyMs": 0.1,
+      "memoryMb": 1.0,
+      "qualitySample": "fixture-only"
+    },
+    "policy": {
+      "decision": "ALLOW_INDEX_AS_EVIDENCE",
+      "sensitivityCeiling": "public-demo",
+      "canonicalTruthClaim": false
+    },
+    "evidenceRefs": [
+      "evidence://nlplab/sample-basic-primitives-record"
+    ]
+  }
+}
