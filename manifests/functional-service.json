@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "functional-service.v1",
+  "service": {
+    "id": "nlplab.holmes.language-pilot",
+    "name": "NLPLab Holmes Language Pilot",
+    "ownerRepository": "SociOS-Linux/nlplab",
+    "status": "experimental",
+    "description": "Offline deterministic language-feature and ranking pilot for Holmes language-intelligence and SourceOS carry integration."
+  },
+  "function": "nlp",
+  "model": {
+    "modelRef": "urn:socioprophet:functional-model:nlplab:deterministic-language:v0",
+    "adapterRefs": [],
+    "runtime": "python-stdlib-offline-smoke",
+    "mutableStatePolicy": "forbidden-in-sourceos"
+  },
+  "inputs": [
+    "text/query",
+    "text/corpus"
+  ],
+  "outputs": [
+    "nlp/features",
+    "ranking/candidates",
+    "evidence/smoke-receipt"
+  ],
+  "evals": {
+    "required": true,
+    "references": [
+      "examples/smoke-input.json",
+      "examples/smoke-output.json",
+      "evidence/smoke-receipt.example.json"
+    ],
+    "minimumPromotionGate": "offline-smoke-similarity-ordering"
+  },
+  "governance": {
+    "ledgerRequired": true,
+    "guardrailRequired": true,
+    "routingRequired": true,
+    "policyRefs": [
+      "SocioProphet/model-governance-ledger",
+      "SocioProphet/guardrail-fabric",
+      "SocioProphet/model-router",
+      "SocioProphet/holmes"
+    ]
+  },
+  "sourceosCarry": {
+    "allowed": true,
+    "carriesMutableModelState": false,
+    "clientRefRequired": true,
+    "launchProfileRefs": [
+      "urn:srcos:model-carry:functional-service:nlplab-holmes-pilot"
+    ]
+  }
+}

@@ -1,23 +1,26 @@
 # nlplab
 
-Linux-native lab workspace for classical NLP, linguistic primitives, entity and relation extraction, topic modeling, semantic parsing, and language pipeline evaluation for Holmes.
+Linux-native lab workspace for NLP, tokenization, and language feature experiments for SocioProphet services.
 
-## Role
+## Role in the Holmes lab family
 
-Holmes owns the product surface and promotion contract. nlplab owns reproducible local experiments, adapter fixtures, benchmark receipts, and cost/latency/quality measurements before language components graduate into platform runtime services.
+`nlplab` is the first governed pilot lab for the Holmes language-intelligence stack. It emits a `functional-service.v1` manifest that can be consumed by:
 
-## Matrix
+- `SocioProphet/holmes` as the language-intelligence product surface;
+- `SocioProphet/functional-model-surfaces` as the normative service contract spine;
+- `SocioProphet/sociosphere` as workspace registry and maturity controller;
+- `SourceOS-Linux/sourceos-model-carry` as disabled-by-default SourceOS carry metadata;
+- `SociOS-Linux/socios` as opt-in training/tuning orchestration;
+- `SocioProphet/model-governance-ledger` and `SocioProphet/model-router` for promotion and routing.
 
-The lab matrix is defined in [`docs/NLP_LAB_MATRIX.md`](docs/NLP_LAB_MATRIX.md).
+This repository does not store model weights, mutable adapters, personal data, secrets, or promotion authority.
 
-## Validation
+## Local validation
 
 ```bash
 make validate
+make smoke
+make carry
 ```
 
-Expected result:
-
-```text
-OK: nlplab language analysis record validated
-```
+The smoke path is deterministic and offline-only.

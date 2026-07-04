@@ -1,6 +1,10 @@
-.PHONY: validate language-analysis-record-validate
+.PHONY: validate smoke carry
 
-validate: language-analysis-record-validate
+validate:
+	python3 tools/validate.py
 
-language-analysis-record-validate:
-	python3 tools/validate_language_analysis_record.py
+smoke:
+	python3 tools/smoke.py
+
+carry:
+	python3 tools/emit_sourceos_carry.py > examples/sourceos-carry.nlplab.json
